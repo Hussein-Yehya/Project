@@ -1,4 +1,4 @@
-package com.algawork.patrimonio.resource;
+package com.algawork.patrimonio.controller;
 
 import java.util.List;
 
@@ -11,23 +11,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.algawork.patrimonio.model.Item;
-import com.algawork.patrimonio.repository.ItemRepository;
+import com.algawork.patrimonio.model.Usuario;
+import com.algawork.patrimonio.repository.UsuarioRepository;
 
 @RestController
 @CrossOrigin("${origem-permitida}")
-public class ItemResource {
+public class UsuarioController {
 
 	@Autowired
-	private ItemRepository itemRepository;
+	private UsuarioRepository usuarioRepository;
 	
-	@GetMapping("/itens")
-	public List<Item> listar() {
-		return itemRepository.findAll();
+	@GetMapping("/usuarios")
+	public List<Usuario> listar() {
+		return usuarioRepository.findAll();
 	}
 	
-	@PostMapping("/itens")
-	public Item adicionar(@RequestBody @Valid Item item) {
-		return itemRepository.save(item);
+	@PostMapping("/usuarios")
+	public Usuario adicionar(@RequestBody @Valid Usuario usuario) {
+		return usuarioRepository.save(usuario);
 	}
 }
